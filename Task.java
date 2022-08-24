@@ -1,34 +1,32 @@
-// import java.util.Calendar;
-// import java.util.Date;
-// import java.util.GregorianCalendar;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 
-/**
- * Task
- */
 public abstract class Task {
     
-    //protected int id;
+    protected static Calendar cal = new GregorianCalendar();
+    public String priority;
     protected String task;
 
     public Task(String task) {
-        //this.id = id;
         this.task = task;
+    }
+
+    public Date TaskCreation() {
+        Date taskCreation = cal.getTime();
+        return taskCreation;
+    }
+
+    public Date ExecuteTo() {
+        cal.roll(Calendar.DAY_OF_YEAR, 0 );
+        Date executeTo = cal.getTime();
+        return executeTo;
     }
 
     @Override
     public String toString() {
-        return task;
+        return String.format("Приоритет: %s \nЗадача: %s \nДата создания: %s \nВыполнить до: %s \n\n", priority, task, TaskCreation(), ExecuteTo());
     }
-    // public Date DateOfCreation() {
-    //     Calendar calendar = new GregorianCalendar();
-    //     Date taskCreationTime = calendar.getTime();
-    //     return taskCreationTime; 
-    // }
 
-    // public abstract Date DueTo();
-
-    
-
-
-    
+    //public int setID() {}  
 }
