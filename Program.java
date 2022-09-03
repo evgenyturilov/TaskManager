@@ -18,8 +18,9 @@ public class Program {
         lp.addTask(new LowPriority("task 1"));
         lp.addTask(new LowPriority("task 1"));
 
-        hp.count();
+        
         lp.PrintTaskList();
+        lp.saveToCSV();
  
     }
 }

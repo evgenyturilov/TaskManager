@@ -1,3 +1,5 @@
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -47,6 +49,21 @@ public class Interface<T extends Task> {
     public void PrintTaskList() {
         for (int i = 0; i < db.size(); i++) {
             System.out.printf("Номер: %d, %s", (i + 1), db.get(i));
+        }
+    }
+    /**
+     * Метод для сохранения данных в файл CSV
+     */
+    public void saveToCSV() {
+
+        try (FileWriter writer = new FileWriter("TaskManager/log.csv", false)) {
+            for (int i = 0; i < db.size(); i++) {
+                writer.append(String.format("%s\n", db.get(i)));
+            }
+            writer.flush();
+            writer.close();
+        } catch (IOException ex) {
+            System.out.println(ex.getMessage());
         }
     }
 }
