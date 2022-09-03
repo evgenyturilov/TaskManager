@@ -3,6 +3,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Класс для работы с данными планировщика
+ */
 public class Interface<T extends Task> {
     List<T> db;
 
